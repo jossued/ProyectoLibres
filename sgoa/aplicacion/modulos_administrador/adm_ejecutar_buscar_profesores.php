@@ -318,7 +318,7 @@ if (@!$_SESSION['usuario']) {
 
         </script>
         <footer class="label-default container-fluid text-center">
-            <p class="copyright small">Copyright &copy; Miguel Alvarez, Jossué Dután, Alexis Maldonado, Alex Ulloa 2018</p>
+            <p class="copyright small">Copyright &copy; Jaime Crespin, Jossué Dután, Alexis Maldonado, Alex Ulloa 2018</p>
         </footer>
     </body>
 
