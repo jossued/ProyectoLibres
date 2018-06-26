@@ -98,76 +98,85 @@ if (@!$_SESSION['usuario']) {
         $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
         ?>
 
-        <div class="container-fluid text-center">    
-            <div class="row content">
-                <div class="col-sm-6 col-sm-offset-3"> 
-                    <h2>Objeto de aprendizaje </h2>
-                    <?php
-                    echo '<table border ="1|1" class="table table-condensed";>';
-                    echo '<tr class="warning">';
-                    echo '<td>Nombre</td>';
-                    echo '<td>Descripción</td>';
-                    echo '<td>Institucion</td>';
-                    echo '<td>FechaCreacion</td>';
-                    echo '<td>palabras clave</td>';
-                    echo '<td>Comentarios</td>';
-                    echo '</tr>';
-                    echo '<tr class="success">';
-                    echo '<td>' . $objeto_de_aprendizaje['nombre'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['descripcion'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['institucion'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['fechaCreacion'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['palabras_clave'] . '</td>';
-                    echo '<td>' . obtener_nro_comentarios_oa($id_objeto_aprendizaje) . '</td>';
-                    echo '</tr>';
-                    echo '</table>'
-                    ?>
 
-                    <h2>Comentarios</h2>
-                    <?php
-                    echo '<table border ="1|1" class="table table-condensed";>';
-                    echo '<tr class="warning">';
-                    echo '<td>Comentario</td>';
-                    echo '<td>Comentado por:</td>';
-                    echo '</tr>';
-                    //inicio carga de comentarios
-                    $statement = "select * from comentario where id_objeto_aprendizaje=?";
-                    $conexion = new Conexion();
-                    $consulta = $conexion->prepare($statement);
-                    $consulta->setFetchMode(PDO::FETCH_ASSOC);
-                    $consulta->execute([$id_objeto_aprendizaje]);
-
-
-
-                    if ($consulta->rowCount() != 0) {
-                        while ($comentario = $consulta->fetch()) {
-                            echo '<tr class="success">';
-                            echo '<td>' . $comentario['contenido'] . '</td>';
-                            if (obtener_tipo_usuario_con_id($comentario['idusuario']) == 'ADM') {
-                                echo '<td>ADMINISTRADOR</td>';
-                            } else {
-                                $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($comentario['idusuario']));
-                                echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
-                            }
-
-                            echo '</tr>';
-                        }
-                    }
-                    echo '</table>';
-                    ?>
-                    <form action="../modulos_profesor/pro_ejecutar_comentar.php" method="post" enctype="multipart/form-data" >
-                        <input class="form-control" style="display: none;" value='<?php echo $id_objeto_aprendizaje ?>' name ="id_objeto_aprendizaje"> </input>
-
-                        <div class="form-group">
-                            <label for="contenido">Comentario:</label>
-                            <textarea type="tex" class="form-control" id="contenido"  name="contenido" required></textarea>
-                        </div>
-
-                        <button id="registrar" type="submit" class="btn btn-default">Comentar</button></br>
-                    </form>
-
+        <div class="container">
+            <div class="well text-center">
+                <h2><?php echo $objeto_de_aprendizaje['nombre'] ?></h2>
+                <p><?php echo $objeto_de_aprendizaje['descripcion'] ?></p>
+                <div style="text-align:right">
+                    <p><?php echo $objeto_de_aprendizaje['fechaCreacion'] ?></p>
                 </div>
             </div>
+
+            <div class="table-responsive-sm">
+                <table class="table thead-light">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <thead class="th">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Comentario</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Imagen</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $statement = "select * from comentario where id_objeto_aprendizaje=?";
+                        $conexion = new Conexion();
+                        $consulta = $conexion->prepare($statement);
+                        $consulta->setFetchMode(PDO::FETCH_ASSOC);
+                        $consulta->execute([$id_objeto_aprendizaje]);
+                        $timezone = date('m/d/Y h:i:s');
+
+
+                        if ($consulta->rowCount() != 0) {
+                            while ($comentario = $consulta->fetch()) {
+                                echo '<tr class="">';
+                                echo '<th scope="row text-center">' . $comentario['idcomentario'] . '</th>';
+                                echo '<td>' . $comentario['contenido'] . '</td>';
+                                if (obtener_tipo_usuario_con_id($comentario['idusuario']) == 'ADM') {
+                                    echo '<td>Administrador</td>';
+                                } else {
+                                    $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($comentario['idusuario']));
+                                    echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
+                                }
+                                //echo '<td>' . $timezone . '</td>';
+                                echo '<td>' . $comentario['fechacomentario'] . '</td>';
+                                echo '<td><img alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src=" ' . $comentario['rutaimagen'] . '"></td>';
+                                echo '</tr>';
+                            }
+                        }
+                        ?>
+
+                        </tbody>
+                    </div>
+
+                </table>
+            </div>
+            <form action="../modulos_profesor/pro_ejecutar_comentar.php" method="post" enctype="multipart/form-data">
+                <input class="form-control" style="display: none;" value='<?php echo $id_objeto_aprendizaje ?>'
+                       name="id_objeto_aprendizaje"> </input>
+
+                <div class="form-group">
+                    <label for="contenido">Comentario:</label>
+                    <textarea type="tex" class="form-control" id="contenido" name="contenido" required></textarea>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="524288">
+                    <fieldset>
+
+                        <legend>Seleccione una imagen JPEG, JPG o PNG</legend>
+                        <p><b>ARCHIVO:</b><input type="file" name="file" id= "file"/></p>
+
+                    </fieldset>
+                </div>
+                <div id = "vista-previa">
+
+                </div>
+                <input type="submit" name="submitted" value="Comentar"/>
+                </br>
+            </form>
+        </div>
+
         </div></br></br></br>
 
         <footer class="label-default container-fluid text-center">

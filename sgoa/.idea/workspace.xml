@@ -59,11 +59,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adm_comentarios.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="adm_comentarios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_comentarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="158" column="18" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+            <state relative-caret-position="389">
+              <caret line="187" lean-forward="true" selection-start-line="109" selection-end-line="187" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pro_comentarios.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_comentarios.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="156" column="71" selection-start-line="156" selection-start-column="71" selection-end-line="156" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
               </folding>
@@ -101,15 +113,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pro_buscar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_buscar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3298">
-              <caret line="194" column="42" selection-start-line="194" selection-start-column="42" selection-end-line="194" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -127,9 +130,9 @@
       <find>subir</find>
       <find>contenido</find>
       <find>insertar</find>
-      <find>id_objeto_aprendizaje</find>
       <find>file</find>
       <find>nombre</find>
+      <find>id_objeto_aprendizaje</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -151,6 +154,7 @@
         <option value="$PROJECT_DIR$/aplicacion/clases_negocio/funciones_oa_profesor.php" />
         <option value="$PROJECT_DIR$/aplicacion/modulos_administrador/adm_ejecutar_comentar.php" />
         <option value="$PROJECT_DIR$/aplicacion/modulos_administrador/adm_comentarios.php" />
+        <option value="$PROJECT_DIR$/aplicacion/modulos_profesor/pro_comentarios.php" />
       </list>
     </option>
   </component>
@@ -278,12 +282,12 @@
       <workItem from="1528816595978" duration="1922000" />
       <workItem from="1528829800909" duration="17697000" />
       <workItem from="1529291448315" duration="1111000" />
-      <workItem from="1530044203743" duration="5863000" />
+      <workItem from="1530044203743" duration="7019000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32225000" />
+    <option name="totallyTimeSpent" value="33381000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -338,13 +342,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_importar_catalogar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3009">
-          <caret line="177" column="49" selection-start-line="176" selection-start-column="62" selection-end-line="177" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_buscar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3298">
@@ -628,8 +625,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_comentarios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="158" column="18" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+        <state relative-caret-position="389">
+          <caret line="187" lean-forward="true" selection-start-line="109" selection-end-line="187" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_comentarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="156" column="71" selection-start-line="156" selection-start-column="71" selection-end-line="156" selection-end-column="71" />
           <folding>
             <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
           </folding>
