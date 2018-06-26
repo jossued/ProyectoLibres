@@ -11,7 +11,6 @@ if (@!$_SESSION['usuario']) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
-
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"></meta>
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"></link>
@@ -164,7 +163,6 @@ if (@!$_SESSION['usuario']) {
 
         });
     });
-
     function comprobar_existencia(arreglo, valor) {
         var flag = false;
         for (i = 0; i < arreglo.length; i++)
@@ -174,7 +172,6 @@ if (@!$_SESSION['usuario']) {
         }
         return flag;
     }
-
     $(document).ready(function () {
         var isvalue = document.getElementById("oas_existentes").innerHTML;
         isvalue = isvalue.split(',');
@@ -209,5 +206,4 @@ if (@!$_SESSION['usuario']) {
     }
 </script>
 </body>
-
 </html>
