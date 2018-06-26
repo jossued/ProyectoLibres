@@ -27,15 +27,15 @@ if ($consulta->rowCount() != 0) {
                         echo "<script>location.href='../aplicacion/modulos_administrador/adm_objetos_aprendizaje.php'</script>";
                     } else {
                         echo '<script>alert("Usuario inactivo. Debe contactar a un administrador.")</script> ';
-                        echo "<script>location.href='../../index.php'</script>";
+                        echo "<script>location.href='../../index2.php'</script>";
                     }
                 } else {
                     echo '<script charset="UTF-8">alert("Contraseña no válida.")</script> ';
-                    echo "<script>location.href='../../index.php'</script>";
+                    echo "<script>location.href='../../index2.php'</script>";
                 }
             } else {
                 echo '<script>alert("TIPO DE USUARIO INCORRECTO")</script> ';
-                echo "<script>location.href='../../index.php'</script>";
+                echo "<script>location.href='../../index2.php'</script>";
             }
             break;
         case 'PRO':
@@ -48,15 +48,15 @@ if ($consulta->rowCount() != 0) {
                         echo "<script>location.href='../aplicacion/modulos_profesor/pro_importar_catalogar.php'</script>";
                     } else {
                         echo '<script>alert("Usuario inactivo. Debe contactar a un administrador.")</script> ';
-                        echo "<script>location.href='../../index.php'</script>";
+                        echo "<script>location.href='../../index2.php'</script>";
                     }
                 } else {
                     echo '<script charset="UTF-8">alert("Contraseña no válida.")</script> ';
-                    echo "<script>location.href='../../index.php'</script>";
+                    echo "<script>location.href='../../index2.php'</script>";
                 }
             } else {
                 echo '<script>alert("TIPO DE USUARIO INCORRECTO")</script> ';
-                echo "<script>location.href='../../index.php'</script>";
+                echo "<script>location.href='../../index2.php'</script>";
             }
             break;
         case 'EST':
@@ -69,21 +69,21 @@ if ($consulta->rowCount() != 0) {
                         echo "<script>location.href='../aplicacion/modulos_estudiante/est_buscar.php'</script>";
                     } else {
                         echo '<script>alert("Usuario inactivo. Debe contactar a un administrador.")</script> ';
-                        echo "<script>location.href='../../index.php'</script>";
+                        echo "<script>location.href='../../index2.php'</script>";
                     }
                 } else {
                     echo '<script charset="UTF-8">alert("Contraseña no válida.")</script> ';
-                    echo "<script>location.href='../../index.php'</script>";
+                    echo "<script>location.href='../../index2.php'</script>";
                 }
             } else {
                 echo '<script>alert("TIPO DE USUARIO INCORRECTO")</script> ';
-                echo "<script>location.href='../../index.php'</script>";
+                echo "<script>location.href='../../index2.php'</script>";
             }
             break;
     }
 } else {
     echo '<script>alert("ESTE USUARIO NO EXISTE, PORFAVOR REGISTRESE PARA PODER INGRESAR")</script> ';
-    echo "<script>location.href='../../index.php'</script>";
+    echo "<script>location.href='../../index2.php'</script>";
 }
 $consulta = null;
 ?>

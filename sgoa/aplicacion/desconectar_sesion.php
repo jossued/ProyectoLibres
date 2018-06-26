@@ -3,9 +3,9 @@ session_start();
 if($_SESSION['usuario']){
         session_unset();
 	session_destroy();
-	header("location:../index.php");
+	header("location:../index2.php");
 }
 else{
-	header("location:../index.php");
+	header("location:../index2.php");
 }
 ?>

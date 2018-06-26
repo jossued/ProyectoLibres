@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (@!$_SESSION['usuario']) {
-    header("Location:../../index.php");
+    header("Location:../../index2.php");
 } elseif ($_SESSION['tipo_usuario'] == 'PRO') {
 //header("Location:index2.php");
     echo "eres PROFESOR";
@@ -179,8 +179,8 @@ if (@!$_SESSION['usuario']) {
                 </div>
             </div>
         </div>
-        <footer class="container-fluid text-center">
-            <p>Diseño y programación: Elsa Vasco, Edison Tamayo, José Criollo</p>
+        <footer class="label-default container-fluid text-center">
+            <p class="copyright small">Copyright &copy; Miguel Alvarez, Jossué Dután, Alexis Maldonado, Alex Ulloa 2018</p>
         </footer>
     </body>
 

@@ -128,11 +128,11 @@ function obtener_lista_de_oas() {
 }
 
 //inicio funciones de comentario
-function insertar_comentario($contenido, $idusuario, $id_objeto_aprendizaje) {
+function insertar_comentario($contenido, $idusuario, $id_objeto_aprendizaje, $rutaimagen) {
     $conexion = new Conexion();
-    $statement = 'INSERT INTO comentario (contenido,idusuario,id_objeto_aprendizaje) VALUES (?, ?, ?)';
+    $statement = 'INSERT INTO comentario (contenido,idusuario,id_objeto_aprendizaje,rutaimagen) VALUES (?, ?, ?, ?)';
     $consulta = $conexion->prepare($statement);
-    if ($consulta->execute(array($contenido, $idusuario, $id_objeto_aprendizaje))) {
+    if ($consulta->execute(array($contenido, $idusuario, $id_objeto_aprendizaje, $rutaimagen))) {
         return true;
     } else {
         return false;

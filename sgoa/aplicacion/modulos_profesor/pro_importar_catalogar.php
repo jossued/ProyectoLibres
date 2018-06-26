@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (@!$_SESSION['usuario']) {
-    header("Location:../../index.php");
+    header("Location:../../index2.php");
 } elseif ($_SESSION['tipo_usuario'] == 'EST') {
     //header("Location:index2.php");
     echo "eres estudiante";
@@ -17,6 +17,8 @@ if (@!$_SESSION['usuario']) {
         <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"></link>
         <script type="text/javascript" src="../../plugins/bootstrap/js/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+        <link href="../../intro.js/introjs.css" rel="stylesheet">
         <title>Proyecto SGOA</title>
     </head>
     <style>
@@ -80,8 +82,8 @@ if (@!$_SESSION['usuario']) {
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="../modulos_profesor/pro_importar_catalogar.php">Importar y catalogar</a></li>
-                        <li><a href="../modulos_profesor/pro_buscar.php">Buscar</a></li>
-                        <li><a href="../modulos_profesor/pro_herramientas.php">Herramientas</a></li>
+                        <li><a data-step="3" data-intro="Puedes Buscar tus objetos de aprendizaje aquí" href="../modulos_profesor/pro_buscar.php">Buscar</a></li>
+                        <li><a data-step="4" data-intro="Puedes encontrar herramientas útiles para crear tus objetos de aprendizaje aquí" href="../modulos_profesor/pro_herramientas.php">Herramientas</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="../../aplicacion/desconectar_sesion.php"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
@@ -94,13 +96,12 @@ if (@!$_SESSION['usuario']) {
             <div class="row content">
                 <div class="col-sm-6 col-sm-offset-3"> 
                     <h2>Objeto de aprendizaje</h2>
-                    <form onsubmit="return validar_formulario()" action="../modulos_profesor/pro_ejecutar_insertar_oa.php" method="post" enctype="multipart/form-data">
+                    <form id="envio" method="post" enctype="multipart/form-data">
                         <p id="oas_existentes" style="display:none;" ><?php
-                            //echo implode(",", scandir('../../storage/')); 
                             require '../clases_negocio/funciones_oa_profesor.php';
                             echo obtener_lista_de_oas();
                             ?></p>
-                        <div class="form-group">
+                        <div class="form-group" data-step="1" data-intro="¡Bienvenido! Ingresa el Objeto de Aprendizaje (.zip) en este campo">
                             <label for="file">Archivo que contine el objeto de aprendizaje:</label>
                             <p id="error1" style="display:none; color:#FF0000;">
                                 Formato de archivo ínvalido! Solo se admiten archivos .zip.
@@ -108,45 +109,85 @@ if (@!$_SESSION['usuario']) {
                             <p id="error2" style="display:none; color:#FF0000;">
                                 El límite máximo de tamaño de archivo es 10MB.
                             </p>
-                            <input type="file" class="form-control" id="o_aprendizaje" name="archivo" required>
+                            <input type="file" class="form-control" id="o_aprendizaje" name="o_aprendizaje" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="nombre">Nombre:</label>
-                            <p id="oas_duplicados" style="display:none; color:#FF0000;">
-                                El nombre de objeto ya ha sido utilizado!
-                            </p>
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre de objeto de aprendizaje" name="nombre" required autocomplete="off">
+                        <div class="camposOA" data-step="2" data-intro="Ingresa los datos del Objeto de Aprendizaje en estos campos">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <p id="oas_duplicados" style="display:none; color:#FF0000;">
+                                    El nombre de objeto ya ha sido utilizado!
+                                </p>
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre de objeto de aprendizaje" name="nombre" required autocomplete="off">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="descripcion">Descripción:</label>
+                                <input type="text" class="form-control" id="descripcion" placeholder="Ingrese la descripción" name="descripcion" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="institucion">Institución:</label>
+                                <input type="text"  class="form-control" id="institucion" placeholder="Institución"  name="institucion" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="palabras_claves">Palabras claves:</label>
+                                <input type="text"  class="form-control" id="palabras_claves" placeholder="Palabras claves"  name="palabras_claves" required>
+                            </div>
                         </div>
-
-
-                        <div class="form-group">
-                            <label for="descripcion">Descripción:</label>
-                            <input type="text" class="form-control" id="descripcion" placeholder="Ingrese la descripción" name="descripcion" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="institucion">Institución:</label>
-                            <input type="text"  class="form-control" id="institucion" placeholder="Institución"  name="institucion" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="palabras_claves">Palabras claves:</label>
-                            <input type="text"  class="form-control" id="palabras_claves" placeholder="Palabras claves"  name="palabras_claves" required>
-                        </div>
-
-                        <button id="registrar" type="submit" class="btn btn-default">Registrar</button></br>
+                        <input type="submit" value="Subir OAs"/>
                     </form>
 
                 </div>
             </div>
         </div></br></br></br>
 
-        <footer class="container-fluid text-center">
-            <p>Diseño y programación: Elsa Vasco, Edison Tamayo, José Criollo</p>
+        <footer class="label-default container-fluid text-center">
+            <script type="text/javascript" src="../../intro.js/intro.js"></script>
+            <a class="btn btn-info btn-default" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Ayuda</a>
+            <br/>
+            <p class="copyright small">Copyright &copy; Daniel Crespin, Jossué Dután, Alexis Maldonado 2018</p>
+
         </footer>
 
+
+
         <script>
+
+            $(function(){
+                $("#envio").on("submit", function(e){
+                    e.preventDefault();
+                    var f = $(this);
+                    var formData = new FormData(document.getElementById("envio"));
+                    $.ajax({
+                        url: "pro_ejecutar_insertar_oa.php",
+                        type: "post",
+                        dataType: "html",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(html){
+                            if(html==1){
+                                alert("Datos guardados satisfactoriamente");
+
+                            }
+                            else alert('No se pudo ingresar');
+                            $("#nombre").val('');
+                            $("#descripcion").val('');
+                            $("#institucion").val('');
+                            $("#palabras_claves").val('');
+                            $('#envio').val('');
+                            $('#o_aprendizaje').val('');
+                        }
+
+                    })
+
+                });
+            });
+
             var a = 0;
             $('#o_aprendizaje').bind('change', function () {
                 if (document.getElementById("registrar").disabled == false) {
