@@ -11,45 +11,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2890">
-              <caret line="170" column="16" selection-start-line="170" selection-start-column="16" selection-end-line="170" selection-end-column="127" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adm_objetos_aprendizaje.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_objetos_aprendizaje.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1651">
-              <caret line="82" column="38" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="38" />
-              <folding>
-                <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adm_ejecutar_insertar_oa.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_ejecutar_insertar_oa.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="142" selection-start-line="24" selection-start-column="130" selection-end-line="24" selection-end-column="142" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ejecutar_registrar_profesor.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aplicacion/formularios_registro/ejecutar_registrar_profesor.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="adm_buscar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,44 +20,70 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="adm_buscar_estudiantes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar_estudiantes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5015">
+              <caret line="295" column="31" selection-start-line="295" selection-start-column="22" selection-end-line="295" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adm_buscar_profesores.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar_profesores.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5100">
+              <caret line="300" column="48" selection-start-line="300" selection-start-column="39" selection-end-line="300" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="adm_comentarios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_comentarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="187" lean-forward="true" selection-start-line="109" selection-end-line="187" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="3264">
+              <caret line="192" column="23" selection-start-line="192" selection-start-column="14" selection-end-line="192" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pro_comentarios.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="adm_ejecutar_actualizar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_ejecutar_actualizar.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="adm_herramientas.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_herramientas.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="293" column="35" selection-start-line="293" selection-start-column="26" selection-end-line="293" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pro_comentarios.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_comentarios.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
+            <state relative-caret-position="2652">
               <caret line="156" column="71" selection-start-line="156" selection-start-column="71" selection-end-line="156" selection-end-column="71" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adm_ejecutar_comentar.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_ejecutar_comentar.php">
+      <file leaf-file-name="pro_buscar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_buscar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="41" lean-forward="true" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+            <state relative-caret-position="3434">
+              <caret line="202" column="23" selection-start-line="202" selection-start-column="14" selection-end-line="202" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="funciones_oa_profesor.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/aplicacion/clases_negocio/funciones_oa_profesor.php">
+      <file leaf-file-name="adm_actualizar_oa.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_actualizar_oa.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="134" column="92" selection-start-line="134" selection-start-column="92" selection-end-line="134" selection-end-column="92" />
+            <state relative-caret-position="2057">
+              <caret line="121" column="31" selection-start-line="121" selection-start-column="22" selection-end-line="121" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -104,11 +91,8 @@
       <file leaf-file-name="pro_importar_catalogar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_importar_catalogar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="150" column="102" selection-start-line="150" selection-start-column="102" selection-end-line="150" selection-end-column="102" />
-              <folding>
-                <element signature="e#7267#7273#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="2550">
+              <caret line="150" column="48" selection-start-line="150" selection-start-column="39" selection-end-line="150" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -178,6 +162,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,11 +228,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -283,26 +268,38 @@
       <workItem from="1528829800909" duration="17697000" />
       <workItem from="1529291448315" duration="1111000" />
       <workItem from="1530044203743" duration="7019000" />
+      <workItem from="1530058318433" duration="695000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33381000" />
+    <option name="totallyTimeSpent" value="34435000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+      <is-preview-enabled value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18993288" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.32905984" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.22792023" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49893844" visible="true" weight="0.19261745" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
+      <window_info id="Structure" order="1" sideWeight="0.50106156" side_tool="true" weight="0.19261745" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -311,7 +308,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -342,55 +338,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_buscar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3298">
-          <caret line="194" column="42" selection-start-line="194" selection-start-column="42" selection-end-line="194" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_ejecutar_insertar_oa.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/formularios_registro/ejecutar_registrar_profesor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="61" selection-end-line="41" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/formularios_registro/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/formularios_registro/RegistrarEstudiante.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar_profesores.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -524,13 +471,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar_profesores.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2363">
-          <caret line="139" column="28" selection-start-line="138" selection-start-column="32" selection-end-line="139" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aplicacion/formularios_registro/RegistrarProfesor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -549,15 +489,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_ejecutar_insertar_oa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="432">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="28" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_buscar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3298">
-          <caret line="194" column="42" selection-start-line="194" selection-start-column="42" selection-end-line="194" selection-end-column="42" />
+        <state relative-caret-position="3434">
+          <caret line="202" column="23" selection-start-line="202" selection-start-column="14" selection-end-line="202" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -568,20 +508,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3298">
-          <caret line="194" selection-start-line="194" selection-end-line="194" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_importar_catalogar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="150" column="102" selection-start-line="150" selection-start-column="102" selection-end-line="150" selection-end-column="102" />
-          <folding>
-            <element signature="e#7267#7273#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="2550">
+          <caret line="150" column="48" selection-start-line="150" selection-start-column="39" selection-end-line="150" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -610,9 +540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1651">
           <caret line="82" column="38" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -623,23 +550,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_comentarios.php">
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_comentarios.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="187" lean-forward="true" selection-start-line="109" selection-end-line="187" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="2652">
+          <caret line="156" column="71" selection-start-line="156" selection-start-column="71" selection-end-line="156" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_comentarios.php">
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_actualizar_oa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="156" column="71" selection-start-line="156" selection-start-column="71" selection-end-line="156" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="2057">
+          <caret line="121" column="31" selection-start-line="121" selection-start-column="22" selection-end-line="121" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3298">
+          <caret line="194" selection-start-line="194" selection-end-line="194" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_actualizar_oa.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="142" column="31" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar_estudiantes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5015">
+          <caret line="295" column="31" selection-start-line="295" selection-start-column="22" selection-end-line="295" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_herramientas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="285" column="35" selection-start-line="285" selection-start-column="26" selection-end-line="285" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_buscar_profesores.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5100">
+          <caret line="300" column="48" selection-start-line="300" selection-start-column="39" selection-end-line="300" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_comentarios.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3264">
+          <caret line="192" column="23" selection-start-line="192" selection-start-column="14" selection-end-line="192" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_profesor/pro_ejecutar_comentar.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_ejecutar_actualizar.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/aplicacion/modulos_administrador/adm_herramientas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="293" column="35" selection-start-line="293" selection-start-column="26" selection-end-line="293" selection-end-column="35" />
         </state>
       </provider>
     </entry>
