@@ -63,6 +63,95 @@ if (@!$_SESSION['usuario']) {
             }
             .row.content {height:auto;} 
         }
+
+
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
     </style>
 
 
@@ -121,6 +210,12 @@ if (@!$_SESSION['usuario']) {
                         </tr>
                         </thead>
                         <tbody>
+                            <div id="myModal" class="modal">
+                                 <span class="close">&times;</span>
+                                 <img class="modal-content" id="img01">
+                                 <div id="caption"></div>
+                            </div>
+
                         <?php
                         $statement = "select * from comentario where id_objeto_aprendizaje=?";
                         $conexion = new Conexion();
@@ -135,20 +230,33 @@ if (@!$_SESSION['usuario']) {
                                 echo '<tr class="">';
                                 echo '<th scope="row text-center">' . $comentario['idcomentario'] . '</th>';
                                 echo '<td>' . $comentario['contenido'] . '</td>';
-                                if (obtener_tipo_usuario_con_id($comentario['idusuario']) == 'ADM') {
-                                    echo '<td>Administrador</td>';
-                                } else {
-                                    $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($comentario['idusuario']));
-                                    echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
-                                }
-                                //echo '<td>' . $timezone . '</td>';
+                                $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($comentario['idusuario']));
+                                echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
                                 echo '<td>' . $comentario['fechacomentario'] . '</td>';
-                                echo '<td><img alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src=" ' . $comentario['rutaimagen'] . '"></td>';
+                                echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
+
                                 echo '</tr>';
                             }
                         }
                         ?>
 
+
+    <script>
+        var modal = document.getElementById('myModal'); 
+                function previewImagen($x){
+                var img =document.getElementById('imgId');
+                var modalImg = document.getElementById('img01');
+                modal.style.display = "block";
+                modalImg.src = $x;
+
+                }
+                
+               
+        var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() { 
+                modal.style.display = "none";
+                }
+    </script>
                         </tbody>
                     </div>
 
@@ -165,7 +273,7 @@ if (@!$_SESSION['usuario']) {
                     <fieldset>
 
                         <legend>Seleccione una imagen JPEG, JPG o PNG</legend>
-                        <p><b>ARCHIVO:</b><input type="file" name="file" id= "file"/></p>
+                        <p><b>Archivo:</b><input type="file" name="file" id= "file"/></p>
 
                     </fieldset>
                 </div>
