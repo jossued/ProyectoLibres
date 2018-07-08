@@ -152,11 +152,28 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
                         }
                         //echo '<td>' . $timezone . '</td>';
                         echo '<td>' . $comentario['fechacomentario'] . '</td>';
-                        echo '<td><img alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src=" ' . $comentario['rutaimagen'] . '"></td>';
+                        echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
                         echo '</tr>';
                     }
                 }
                 ?>
+
+                <script>
+                    var modal = document.getElementById('myModal');
+                    function previewImagen($x){
+                        var img =document.getElementById('imgId');
+                        var modalImg = document.getElementById('img01');
+                        modal.style.display = "block";
+                        modalImg.src = $x;
+
+                    }
+
+
+                    var span = document.getElementsByClassName("close")[0];
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+                </script>
 
                 </tbody>
             </div>
