@@ -18,7 +18,7 @@ $target_file = $carpeta .urlencode($path);
 
 if (insertar_comentario($contenido, $_SESSION['id'], $id_objeto_aprendizaje, $target_file)) {
 
-    echo '<script charset="UTF-8">alert("Su comentario se insertó correctamente")</script> ';
+    echo '<script charset="UTF-8">alert("Su comentario se inserto correctamente")</script> ';
     echo "<script>location.href='pro_buscar.php'</script>";
 } else {
     echo '<script charset="UTF-8">alert("No se pudo insertar su comentario. ")</script> ';
