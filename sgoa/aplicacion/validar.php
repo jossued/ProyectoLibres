@@ -1,5 +1,5 @@
 <?php
-//header('Content-type: text/plain; charset=utf-8');
+
 session_start();
 require '../aplicacion/clases_negocio/clase_conexion.php';
 
@@ -7,7 +7,6 @@ $usuario = filter_input(INPUT_POST, 'user');
 $contrasenia = filter_input(INPUT_POST, 'pass');
 $tipo_usuario = filter_input(INPUT_POST, 'tipo_usuario');
 
-//echo $usuario.'-------'.$contrasenia.'-------'.$tipo_usuario;
 
 $conexion = new Conexion();
 $query = "select * from usuario where usuario=?";

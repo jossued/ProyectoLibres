@@ -3,10 +3,8 @@ session_start();
 if (@!$_SESSION['usuario']) {
     header("Location:../../index2.php");
 } elseif ($_SESSION['tipo_usuario'] == 'PRO') {
-//header("Location:index2.php");
-    echo "eres PROFESOR";
 } elseif ($_SESSION['tipo_usuario'] == 'ADM') {
-    echo "eres administrador";
+
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -125,7 +123,7 @@ if (@!$_SESSION['usuario']) {
 
                     <?php
                     require_once '../clases_negocio/clase_conexion.php';
-                    require '../clases_negocio/funciones_oa_profesor.php';
+                    require '../clases_negocio/funciones_oa_estudiante.php';
                     $statement = ("select * from objeto_aprendizaje");
                     $conexion = new Conexion();
                     $consulta = $conexion->prepare($statement);
@@ -134,47 +132,46 @@ if (@!$_SESSION['usuario']) {
 
                     echo '<table border ="1|1" class="table table-condensed";>';
                     echo '<tr class="warning">';
-                    //echo '<td>Id</td>';
                     echo '<td>Nombre</td>';
                     echo '<td>Descripción</td>';
-                    //echo '<td>idProfesor</td>';
                     echo '<td>Institucion</td>';
                     echo '<td>FechaCreacion</td>';
                     echo '<td>palabras clave</td>';
                     echo '<td>Tamaño</td>';
                     echo '<td>Autor</td>';
                     echo '<td>Comentarios</td>';
-                    //echo "<td>ruta</td>";
                     echo "</tr>";
 
                     if ($consulta->rowCount() != 0) {
                         while ($row = $consulta->fetch()) {
                             echo '<tr class="success">';
-                            //echo '<td>' . $row['idobjeto_aprendizaje'] . '</td>';
                             echo '<td>' . $row['nombre'] . '</td>';
                             echo '<td>' . $row['descripcion'] . '</td>';
-                            //echo '<td>' . $row['id_profesor'] . '</td>';
                             echo '<td>' . $row['institucion'] . '</td>';
                             echo '<td>' . $row['fechaCreacion'] . '</td>';
                             echo '<td>' . $row['palabras_clave'] . '</td>';
                             echo '<td>' . number_format($row['tamanio'] / 1e6, 2, '.', '') . ' MB' . '</td>';
-                            if (obtener_tipo_usuario_con_id($row['id_usuario']) == 'ADM') {
-                                echo '<td>ADMINISTRADOR</td>';
-                            } else {
-                                $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($row['id_usuario']));
-                                echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
-                            }
-                            //echo '<td>' . $row['ruta'] . '</td>';
-                            echo '<td><a href="est_comentarios.php?id='.$row['idobjeto_aprendizaje'].'">'. obtener_nro_comentarios_oa($row['idobjeto_aprendizaje']) . '</a></td>';                          
+                           
+                            $estudiante = obtener_estudiante_como_arreglo(obtener_id_estudiante_con_id_usuario($row['id_usuario']));
+                            echo '<td>' . $estudiante['nombres'] . ' ' . $estudiante['apellidos'] .     '</td>';
+                            echo '<td><a href="est_comentarios.php?id='.$row['idobjeto_aprendizaje'].'">'. obtener_nro_comentarios_oa($row['idobjeto_aprendizaje']) .       '</a></td>';                          
                             echo '<td><a href="' . $row['ruta'] . '">Descargar</a></td>';
-                            echo '</tr>';
+                            echo "<td><a href='#' onmouseover=\"hacer_hover('".$row['ruta']."');\"><span class='glyphicon glyphicon-eye-open'></a></td>";
+                            
                         }
                     }
+
                     echo '</table>';
                     $conexion = null;
                     ?>
 
-                    <!-- --------------------------------------------- -->
+            <script>
+                function hacer_hover($x)
+                {
+                    myPopup = window.open('../modulos_administrador/previsualizar.php?vs='+$x,'popupWindow','width=640,height=480');
+                    myPopup.opener = self;
+                }
+            </script>
 
                 </div>
             </div>
