@@ -3,10 +3,9 @@ session_start();
 if (@!$_SESSION['usuario']) {
     header("Location:../../index2.php");
 } elseif ($_SESSION['tipo_usuario'] == 'EST') {
-    //header("Location:index2.php");
-    echo "eres estudiante";
+
 } elseif ($_SESSION['tipo_usuario'] == 'ADM') {
-    echo "eres estudiante";
+
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -63,6 +62,94 @@ if (@!$_SESSION['usuario']) {
             }
             .row.content {height:auto;} 
         }
+
+
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
     </style>
 
 
@@ -88,76 +175,118 @@ if (@!$_SESSION['usuario']) {
                 </div>
             </div>
         </nav>
-        <!--Inicio de formulario -->
+
         <?php
         require_once '../clases_negocio/clase_conexion.php';
-        require '../clases_negocio/funciones_oa_profesor.php';
+        require '../clases_negocio/funciones_oa_estudiante.php';
         $id_objeto_aprendizaje = filter_input(INPUT_GET, 'id');
-        //extract($_GET);
         $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
         ?>
 
-        <div class="container-fluid text-center">    
-            <div class="row content">
-                <div class="col-sm-6 col-sm-offset-3"> 
-                    <h2>Objeto de aprendizaje </h2>
-                    <?php
-                    echo '<table border ="1|1" class="table table-condensed";>';
-                    echo '<tr class="warning">';
-                    echo '<td>Nombre</td>';
-                    echo '<td>Descripción</td>';
-                    echo '<td>Institucion</td>';
-                    echo '<td>FechaCreacion</td>';
-                    echo '<td>palabras clave</td>';
-                    echo '<td>Comentarios</td>';
-                    echo '</tr>';
-                    echo '<tr class="success">';
-                    echo '<td>' . $objeto_de_aprendizaje['nombre'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['descripcion'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['institucion'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['fechaCreacion'] . '</td>';
-                    echo '<td>' . $objeto_de_aprendizaje['palabras_clave'] . '</td>';
-                    echo '<td>' . obtener_nro_comentarios_oa($id_objeto_aprendizaje) . '</td>';
-                    echo '</tr>';
-                    echo '</table>'
-                    ?>
 
-                    <h2>Comentarios</h2>
-                    <?php
-                    echo '<table border ="1|1" class="table table-condensed";>';
-                    echo '<tr class="warning">';
-                    echo '<td>Comentario</td>';
-                    echo '<td>Comentado por:</td>';
-                    echo '</tr>';
-                    //inicio carga de comentarios
-                    $statement = "select * from comentario where id_objeto_aprendizaje=?";
-                    $conexion = new Conexion();
-                    $consulta = $conexion->prepare($statement);
-                    $consulta->setFetchMode(PDO::FETCH_ASSOC);
-                    $consulta->execute([$id_objeto_aprendizaje]);
-
-
-
-                    if ($consulta->rowCount() != 0) {
-                        while ($comentario = $consulta->fetch()) {
-                            echo '<tr class="success">';
-                            echo '<td>' . $comentario['contenido'] . '</td>';
-                            if (obtener_tipo_usuario_con_id($comentario['idusuario']) == 'ADM') {
-                                echo '<td>ADMINISTRADOR</td>';
-                            } else {
-                                $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($comentario['idusuario']));
-                                echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
-                            }
-                            echo '</tr>';
-                        }
-                    }
-                    echo '</table>';
-                    ?>
-                    
-
+        <div class="container">
+            <div class="well text-center">
+                <h2><?php echo $objeto_de_aprendizaje['nombre'] ?></h2>
+                <p><?php echo $objeto_de_aprendizaje['descripcion'] ?></p>
+                <div style="text-align:right">
+                    <p><?php echo $objeto_de_aprendizaje['fechaCreacion'] ?></p>
                 </div>
             </div>
+
+            <div class="table-responsive-sm">
+                <table class="table thead-light">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <thead class="th">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Comentario</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Imagen</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <div id="myModal" class="modal">
+                                 <span class="close">&times;</span>
+                                 <img class="modal-content" id="img01">
+                                 <div id="caption"></div>
+                            </div>
+
+                        <?php
+                        $statement = "select * from comentario where id_objeto_aprendizaje=?";
+                        $conexion = new Conexion();
+                        $consulta = $conexion->prepare($statement);
+                        $consulta->setFetchMode(PDO::FETCH_ASSOC);
+                        $consulta->execute([$id_objeto_aprendizaje]);
+                        $timezone = date('m/d/Y h:i:s');
+
+                        if ($consulta->rowCount() != 0) {
+                            while ($comentario = $consulta->fetch()) {
+                                echo '<tr class="">';
+                                echo '<th scope="row text-center">' . $comentario['idcomentario'] . '</th>';
+                                echo '<td>' . $comentario['contenido'] . '</td>';
+                                $estudiante = obtener_estudiante_como_arreglo(obtener_id_estudiante_con_id_usuario($comentario['idusuario']));
+                                echo '<td>' . $estudiante['nombres'] . ' ' . $estudiante['apellidos'] . '</td>';
+                                echo '<td>' . $comentario['fechacomentario'] . '</td>';
+                                if(($comentario['rutaimagen'])=="../../imagenes/")
+                                    {
+                                        echo '</tr>';
+
+                                    }else{
+                                          echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
+                                          echo '</tr>';
+                                    }
+                                
+                            }
+                        }
+                        ?>
+
+
+    <script>
+        var modal = document.getElementById('myModal'); 
+                function previewImagen($x){
+                var img =document.getElementById('imgId');
+                var modalImg = document.getElementById('img01');
+                modal.style.display = "block";
+                modalImg.src = $x;
+
+                }
+        var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() { 
+                modal.style.display = "none";
+                }
+    </script>
+                                   
+                
+               </tbody>
+                    </div>
+
+                </table>
+            </div>
+            <form action="../modulos_estudiante/est_ejecutar_comentar.php" method="post" enctype="multipart/form-data">
+                <input class="form-control" style="display: none;" value='<?php echo $id_objeto_aprendizaje ?>'
+                       name="id_objeto_aprendizaje"> </input>
+
+                <div class="form-group">
+                    <label for="contenido">Comentario:</label>
+                    <textarea type="tex" class="form-control" id="contenido" name="contenido" required></textarea>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="524288">
+                    <fieldset>
+
+                        <legend>Seleccione una imagen JPEG, JPG o PNG</legend>
+                        <p><b>Archivo:</b><input type="file" name="file" id= "file"/></p>
+
+                    </fieldset>
+                </div>
+                <div id = "vista-previa">
+
+                </div>
+                <input type="submit" name="submitted" value="Comentar"/>
+                </br>
+            </form>
         </div>
+
+        </div></br></br></br>
 
         <footer class="label-default container-fluid text-center">
             <p class="copyright small">Copyright &copy; Jaime Crespin, Jossué Dután, Alexis Maldonado 2018</p>
