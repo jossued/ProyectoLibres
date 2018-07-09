@@ -16,21 +16,6 @@ if (@!$_SESSION['usuario']) {
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script>
-        $(function(){
-            $("#file").on("change", function(){
-                $("#vista-previa").html('');
-                var archivos = document.getElementById('file').files;
-                var navegador = window.URL || window.webkitURL;
-                
-                var objeto_url = navegador.createObjetcUrl(archivos);
-                $("#vista-previa").append("<img src="+objeto_url+" width = '100' height= '100'>");
-                
-            });
-        });
-
-    </script>
-
     <meta charset="utf-8"></meta>
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"></link>
     <script type="text/javascript" src="../../plugins/bootstrap/js/jquery-3.3.1.js"></script>
@@ -209,6 +194,7 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
                     <th scope="col">Autor</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Imagen</th>
+                    <th scope="col">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -239,9 +225,24 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
                         }
                         //echo '<td>' . $timezone . '</td>';
                         echo '<td>' . $comentario['fechacomentario'] . '</td>';
-                        echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
+                        if(($comentario['rutaimagen'])=="../../imagenes/")
+                        {
+                            echo '</tr>';
+
+                        }else{
+                            echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
+                            echo '</tr>';
+                        }
+                        echo "<td><a onClick=\"javascript: return confirm('Realmente desea eliminar el objeto de aprendizaje?');\" href='adm_comentarios.php?id=".$comentario['id_objeto_aprendizaje']."&idcom=".$comentario['idcomentario']."&idborrar=2'><span class='glyphicon glyphicon-trash'></a></td>";
+
                         echo '</tr>';
                     }
+                    extract($_GET);
+                    if (@$idborrar == 2) {
+                        eliminarComentario($idcom);
+                        echo '<script>location.href="adm_comentarios.php?id='.$id.'"</script>';
+                    }
+                    $conexion = null;
                 }
                 ?>
 

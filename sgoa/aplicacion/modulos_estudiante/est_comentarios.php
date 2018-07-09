@@ -203,6 +203,8 @@ if (@!$_SESSION['usuario']) {
                             <th scope="col">Autor</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Imagen</th>
+                            <th scope="col">Acciones</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -236,9 +238,20 @@ if (@!$_SESSION['usuario']) {
                                           echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
                                           echo '</tr>';
                                     }
-                                
+                                $nombreUsuario = consultarNombreUsuario($comentario['idusuario']);
+                                if( $_SESSION['usuario'] == $nombreUsuario['usuario']){
+                                    echo "<td><a onClick=\"javascript: return confirm('Realmente desea eliminar el objeto de aprendizaje?');\" href='est_comentarios.php?id=".$comentario['id_objeto_aprendizaje']."&idcom=".$comentario['idcomentario']."&idborrar=2'><span class='glyphicon glyphicon-trash'></a></td>";
+                                }else{
+
+                                }
                             }
                         }
+                        extract($_GET);
+                        if (@$idborrar == 2) {
+                            eliminarComentario($idcom);
+                            echo '<script>location.href="est_comentarios.php?id='.$id.'"</script>';
+                        }
+                        $conexion = null;
                         ?>
 
 
