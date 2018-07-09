@@ -239,7 +239,15 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
                             echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
                         }
                         echo '<td>' . $comentario['fechacomentario'] . '</td>';
-                        echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
+                      
+                        if(($comentario['rutaimagen'])=="../../imagenes/")
+                        {
+                            echo '</tr>';
+
+                        }else{
+                            echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
+                            echo '</tr>';
+                        }
                         $nombreUsuario = consultarNombreUsuario($comentario['idusuario']);
                         if( $_SESSION['usuario'] == $nombreUsuario['usuario']){
                             echo "<td><a onClick=\"javascript: return confirm('Realmente desea eliminar el objeto de aprendizaje?');\" href='pro_comentarios.php?id=".$comentario['id_objeto_aprendizaje']."&idcom=".$comentario['idcomentario']."&idborrar=2'><span class='glyphicon glyphicon-trash'></a></td>";

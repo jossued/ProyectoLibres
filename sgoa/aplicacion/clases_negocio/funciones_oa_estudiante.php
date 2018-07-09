@@ -250,5 +250,26 @@ function obtener_nro_usuarios_con_usuario($usuario) {
         return null;
     }
 }
+function consultarNombreUsuario($id_usuario){
+    $conexion = new Conexion();
+    $statement = 'select usuario from usuario where idusuario=?';
+    $consulta = $conexion->prepare($statement);
+    $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    $consulta->execute([$id_usuario]);
+    if ($consulta->rowCount() != 0) {
+        $fila = $consulta->fetch();
+    }
+    if (isset($fila)) {
+        return $fila;
+    } else {
+        return null;
+    }
+}
 
+function eliminarComentario($id_comentario){
+    $statement_del = "DELETE FROM comentario WHERE idcomentario=?";
+    $conexion_del = new Conexion();
+    $consulta_del = $conexion_del->prepare($statement_del);
+    $consulta_del->execute(array($id_comentario));
+}
 ?>
