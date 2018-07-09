@@ -239,6 +239,7 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
                             echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
                         }
                         echo '<td>' . $comentario['fechacomentario'] . '</td>';
+                      
                         if(($comentario['rutaimagen'])=="../../imagenes/")
                         {
                             echo '</tr>';
