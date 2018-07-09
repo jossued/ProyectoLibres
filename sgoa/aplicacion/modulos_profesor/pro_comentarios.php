@@ -2,11 +2,10 @@
 session_start();
 if (@!$_SESSION['usuario']) {
     header("Location:../../index2.php");
-} elseif ($_SESSION['tipo_usuario'] == 'EST') {
-    //header("Location:index2.php");
-    echo "eres estudiante";
+} elseif ($_SESSION['tipo_usuario'] == 'PRO') {
+
 } elseif ($_SESSION['tipo_usuario'] == 'ADM') {
-    echo "eres estudiante";
+
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -146,7 +145,6 @@ if (@!$_SESSION['usuario']) {
     cursor: pointer;
 }
 
-/* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
     .modal-content {
         width: 100%;
@@ -178,12 +176,11 @@ if (@!$_SESSION['usuario']) {
                 </div>
             </div>
         </nav>
-        <!--Inicio de formulario -->
+
         <?php
         require_once '../clases_negocio/clase_conexion.php';
         require '../clases_negocio/funciones_oa_profesor.php';
         $id_objeto_aprendizaje = filter_input(INPUT_GET, 'id');
-        //extract($_GET);
         $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
         ?>
 
@@ -224,7 +221,6 @@ if (@!$_SESSION['usuario']) {
                         $consulta->execute([$id_objeto_aprendizaje]);
                         $timezone = date('m/d/Y h:i:s');
 
-
                         if ($consulta->rowCount() != 0) {
                             while ($comentario = $consulta->fetch()) {
                                 echo '<tr class="">';
@@ -240,7 +236,6 @@ if (@!$_SESSION['usuario']) {
                         }
                         ?>
 
-
     <script>
         var modal = document.getElementById('myModal'); 
                 function previewImagen($x){
@@ -251,7 +246,6 @@ if (@!$_SESSION['usuario']) {
 
                 }
                 
-               
         var span = document.getElementsByClassName("close")[0];
             span.onclick = function() { 
                 modal.style.display = "none";
