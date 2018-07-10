@@ -134,7 +134,7 @@ if (@!$_SESSION['usuario']) {
                             echo '<td>' . $row['apellidos'] . '  ' . $row['nombres'] . '</td>';
                             echo '<td>' . $row['ci'] . '</td>';
                             if ($row['activo'] == 'V') {
-                                echo '<td><a href="adm_buscar_profesores.php?id=' . $row['idUsuario'] . '&id_gestion=1">Desactivar usuario</a></td>';
+                                echo '<td><a href="adm_buscar_profesores.php?id=' . $row['idUsuario'] . '&id_gestion=1&mail=' . $row['mail'] . '&usuario=' . $row['usuario'] . '&contrasenia=' . $row['contrasenia'] . '">Desactivar usuario</a></td>';
                             } else {
                                 echo '<td><a href="adm_buscar_profesores.php?id=' . $row['idUsuario'] . '&id_gestion=2&mail=' . $row['mail'] . '&usuario=' . $row['usuario'] . '&contrasenia=' . $row['contrasenia'] . '">Activar usuario</a></td>';
                             }
@@ -147,16 +147,16 @@ if (@!$_SESSION['usuario']) {
                     $id_gestion = filter_input(INPUT_GET, 'id_gestion');
                     $id = filter_input(INPUT_GET, 'id');
                     if ($id_gestion == 1) {
-                        act_des_usuario($id, "F");
-                        
+
                         $mail = filter_input(INPUT_GET, 'mail');
                         $user = filter_input(INPUT_GET, 'usuario');
-                        enviar_mail($mail,$user,"");
-                        
+                        enviar_mail2($mail,$user);
+                        act_des_usuario($id, "F");
                         echo '<script>alert("Usuario desactivado correctamente")</script> ';
                         echo "<script>location.href='adm_buscar_profesores.php'</script>";
                     }
                     if ($id_gestion == 2) {
+
                         $mail = filter_input(INPUT_GET, 'mail');
                         $user = filter_input(INPUT_GET, 'usuario');
                         $password = filter_input(INPUT_GET, 'contrasenia');
