@@ -266,10 +266,4 @@ function consultarNombreUsuario($id_usuario){
     }
 }
 
-function eliminarComentario($id_comentario){
-    $statement_del = "DELETE FROM comentario WHERE idcomentario=?";
-    $conexion_del = new Conexion();
-    $consulta_del = $conexion_del->prepare($statement_del);
-    $consulta_del->execute(array($id_comentario));
-}
 ?>
