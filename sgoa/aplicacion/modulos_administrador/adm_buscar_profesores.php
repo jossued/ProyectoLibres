@@ -148,6 +148,11 @@ if (@!$_SESSION['usuario']) {
                     $id = filter_input(INPUT_GET, 'id');
                     if ($id_gestion == 1) {
                         act_des_usuario($id, "F");
+                        
+                        $mail = filter_input(INPUT_GET, 'mail');
+                        $user = filter_input(INPUT_GET, 'usuario');
+                        enviar_mail($mail,$user,"");
+                        
                         echo '<script>alert("Usuario desactivado correctamente")</script> ';
                         echo "<script>location.href='adm_buscar_profesores.php'</script>";
                     }
@@ -298,7 +303,7 @@ if (@!$_SESSION['usuario']) {
 
         </script>
         <footer class="label-default container-fluid text-center">
-            <p class="copyright small">Copyright &copy; Jaime Crespin, Jossué Dután, Alexis Maldonado 2018</p>
+            <p class="copyright small">Copyright &copy; Alex Ulloa,  Miguel Alvarez, Jossué Dután, Alexis Maldonado 2018</p>
         </footer>
     </body>
 

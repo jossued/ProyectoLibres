@@ -144,7 +144,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <h2>Proyecto de Aplicaciones en Ambientes Libres</h2>
+                <h2>Proyecto de Ingenieria de Software 2</h2>
             </div>
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
@@ -168,7 +168,7 @@
                     <li class="footer-menu-divider">&sdot;</li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>-->
-                <p class="copyright text-muted small">Copyright &copy; Daniel Crespin, Jossué Dután, Alexis Maldonado, 2018</p>
+                <p class="copyright text-muted small">Copyright &copy; Alex Ulloa,  Miguel Alvarez, Jossué Dután, Alexis Maldonado 2018, 2018</p>
             </div>
         </div>
     </div>

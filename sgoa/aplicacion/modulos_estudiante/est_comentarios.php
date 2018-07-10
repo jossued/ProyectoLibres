@@ -195,7 +195,7 @@ if (@!$_SESSION['usuario']) {
 
             <div class="table-responsive-sm">
                 <table class="table thead-light">
-                    <div class="col-sm-6 col-sm-offset-3">
+                    <div class="col-sm-4">
                         <thead class="th">
                         <tr>
                             <th scope="col">#</th>
@@ -227,23 +227,28 @@ if (@!$_SESSION['usuario']) {
                                 echo '<tr class="">';
                                 echo '<th scope="row text-center">' . $comentario['idcomentario'] . '</th>';
                                 echo '<td>' . $comentario['contenido'] . '</td>';
+
                                 $estudiante = obtener_estudiante_como_arreglo(obtener_id_estudiante_con_id_usuario($comentario['idusuario']));
                                 echo '<td>' . $estudiante['nombres'] . ' ' . $estudiante['apellidos'] . '</td>';
                                 echo '<td>' . $comentario['fechacomentario'] . '</td>';
                                 if(($comentario['rutaimagen'])=="../../imagenes/")
                                     {
-                                        echo '</tr>';
+                                        echo "<td></td>";
 
                                     }else{
-                                          echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='300' height='150'></a></td>";
-                                          echo '</tr>';
+                                          echo "<td><a onclick=\"previewImagen('".$comentario['rutaimagen']."');\"><img id='imgId' src='". $comentario['rutaimagen'] . "' width='250' height='200'></a></td>";
+                                          
                                     }
                                 $nombreUsuario = consultarNombreUsuario($comentario['idusuario']);
                                 if( $_SESSION['usuario'] == $nombreUsuario['usuario']){
                                     echo "<td><a onClick=\"javascript: return confirm('Realmente desea eliminar el objeto de aprendizaje?');\" href='est_comentarios.php?id=".$comentario['id_objeto_aprendizaje']."&idcom=".$comentario['idcomentario']."&idborrar=2'><span class='glyphicon glyphicon-trash'></a></td>";
+                                    /*echo '<td><button>hola</button></td>';*/
+                                    echo '</tr>';
                                 }else{
+                                    echo "<td></td>";
+                                    echo '</tr>';
 
-                                }
+                               }
                             }
                         }
                         extract($_GET);
@@ -302,7 +307,7 @@ if (@!$_SESSION['usuario']) {
         </div></br></br></br>
 
         <footer class="label-default container-fluid text-center">
-            <p class="copyright small">Copyright &copy; Jaime Crespin, Jossué Dután, Alexis Maldonado 2018</p>
+            <p class="copyright small">Copyright &copy; Alex Ulloa,  Miguel Alvarez, Jossué Dután, Alexis Maldonado 2018</p>
         </footer>
     </body>
 
