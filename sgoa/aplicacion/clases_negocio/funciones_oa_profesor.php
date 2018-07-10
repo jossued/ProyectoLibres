@@ -207,16 +207,6 @@ function recuperar_id_usuario_por_nombre($usuario) {
     }
 }
 
-function insertar_estudiante($ci, $nombres, $apellidos, $carrera, $facultad, $mail, $id_usuario) {
-    $conexion = new Conexion();
-    $statement = 'INSERT INTO estudiante (ci,nombres,apellidos, carrera, id_facultad, mail, id_usuario) VALUES (?,?,?,?,?,?,?)';
-    $consulta = $conexion->prepare($statement);
-    if ($consulta->execute(array($ci, $nombres, $apellidos, $carrera, $facultad, $mail, $id_usuario))) {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 function insertar_profesor($ci, $nombres, $apellidos, $id_departamento, $id_facultad, $mail, $id_usuario) {
     $conexion = new Conexion();

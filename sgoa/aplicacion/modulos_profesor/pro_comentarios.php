@@ -183,6 +183,7 @@ if (@!$_SESSION['usuario']) {
 <?php
 require_once '../clases_negocio/clase_conexion.php';
 require '../clases_negocio/funciones_oa_profesor.php';
+require '../clases_negocio/funciones_oa_estudiante.php';
 $id_objeto_aprendizaje = filter_input(INPUT_GET, 'id');
 //extract($_GET);
 $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
@@ -233,11 +234,14 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
                         echo '<th scope="row text-center">' . $comentario['idcomentario'] . '</th>';
                         echo '<td>' . $comentario['contenido'] . '</td>';
                         if (obtener_tipo_usuario_con_id($comentario['idusuario']) == 'ADM') {
-                            echo '<td>Administrador</td>';
-                        } else {
+                                echo '<td>ADMINISTRADOR</td>';
+                        } elseif(obtener_tipo_usuario_con_id($comentario['idusuario']) == 'PRO') {
                             $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($comentario['idusuario']));
-                            echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
-                        }
+                                echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
+                        }else{
+                                $estudiante = obtener_estudiante_como_arreglo(obtener_id_estudiante_con_id_usuario($comentario['idusuario']));
+                                echo '<td>' . $estudiante['nombres'] . ' ' . $estudiante['apellidos'] . '</td>';
+                            }
                         echo '<td>' . $comentario['fechacomentario'] . '</td>';
                         if(($comentario['rutaimagen'])=="../../imagenes/")
                         {

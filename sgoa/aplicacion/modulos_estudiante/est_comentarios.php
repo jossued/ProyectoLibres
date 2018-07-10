@@ -179,6 +179,7 @@ if (@!$_SESSION['usuario']) {
         <?php
         require_once '../clases_negocio/clase_conexion.php';
         require '../clases_negocio/funciones_oa_estudiante.php';
+        require '../clases_negocio/funciones_oa_profesor.php';
         $id_objeto_aprendizaje = filter_input(INPUT_GET, 'id');
         $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
         ?>
