@@ -228,9 +228,15 @@ if (@!$_SESSION['usuario']) {
                                 echo '<tr class="">';
                                 echo '<th scope="row text-center">' . $comentario['idcomentario'] . '</th>';
                                 echo '<td>' . $comentario['contenido'] . '</td>';
-
-                                $estudiante = obtener_estudiante_como_arreglo(obtener_id_estudiante_con_id_usuario($comentario['idusuario']));
+                                if (obtener_tipo_usuario_con_id($comentario['idusuario']) == 'ADM') {
+                                    echo '<td>ADMINISTRADOR</td>';
+                                } elseif(obtener_tipo_usuario_con_id($comentario['idusuario']) == 'PRO') {
+                                    $profesor = obtener_profesor_como_arreglo(obtener_id_profesor_con_id_usuario($comentario['idusuario']));
+                                echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
+                                }else{
+                                    $estudiante = obtener_estudiante_como_arreglo(obtener_id_estudiante_con_id_usuario($comentario['idusuario']));
                                 echo '<td>' . $estudiante['nombres'] . ' ' . $estudiante['apellidos'] . '</td>';
+                            }
                                 echo '<td>' . $comentario['fechacomentario'] . '</td>';
                                 if(($comentario['rutaimagen'])=="../../imagenes/")
                                     {

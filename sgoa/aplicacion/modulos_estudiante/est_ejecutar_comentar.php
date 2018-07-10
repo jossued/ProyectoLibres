@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../clases_negocio/funciones_oa_estudiante.php';
-
+require '../clases_negocio/funciones_oa_profesor.php';
 $id_objeto_aprendizaje = filter_input(INPUT_POST, 'id_objeto_aprendizaje');
 $contenido = filter_input(INPUT_POST, 'contenido');
 
