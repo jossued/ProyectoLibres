@@ -8,15 +8,31 @@ if (@!$_SESSION['usuario']) {
 } elseif ($_SESSION['tipo_usuario'] == 'ADM') {
     echo "eres estudiante";
 }
+
+    require_once 'High/examples/pie-basic/conexion.php';
+    $sql = "select * from facultad";
+    $result = mysqli_query($conexion, $sql); 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
     <head>
-
         <meta charset="utf-8"></meta>
         <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"></link>
         <script type="text/javascript" src="../../plugins/bootstrap/js/jquery-3.3.1.js"></script>
         <script type="text/javascript" src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script languaje = "javascript">
+            $(document).ready(function(){
+                $("#cbx_carreras").change(function(){
+                    $("#cbx_carreras option:selected").each(function(){
+                            idfacultad = $(this).val();
+
+                            $.post("getCarreras.php", {idfacultad: idfacultad}, function(data){
+                                $("#cbx_materia").html(data);
+                            });
+                    });
+                })
+            });
+        </script>
 
         <link href="../../intro.js/introjs.css" rel="stylesheet">
         <title>Proyecto SGOA</title>
@@ -99,6 +115,7 @@ if (@!$_SESSION['usuario']) {
                     <form id="envio" method="post" enctype="multipart/form-data">
                         <p id="oas_existentes" style="display:none;" ><?php
                             require '../clases_negocio/funciones_oa_profesor.php';
+                            require '../clases_negocio/funciones_administrador.php';
                             echo obtener_lista_de_oas();
                             ?></p>
                         <div class="form-group" data-step="1" data-intro="¡Bienvenido! Ingresa el Objeto de Aprendizaje (.zip) en este campo">
@@ -136,8 +153,23 @@ if (@!$_SESSION['usuario']) {
                                 <label for="palabras_claves">Palabras claves:</label>
                                 <input type="text"  class="form-control" id="palabras_claves" placeholder="Palabras claves"  name="palabras_claves" required>
                             </div>
-                        </div>
-                        <input type="submit" value="Subir OAs"/>
+                            <label >Carreras:</label>
+                            <select class= "form-control" id="cbx_carreras"  name="carreras" dir="ltr" required>
+                                <option value="0">Selecione una Carrera</option>
+                                <?php 
+
+                                    while($row = mysqli_fetch_array($result)){
+                                ?>
+                                    <option value = "<?php echo $row['idfacultad'];?>"> <?php echo $row['facultad'];?></option>
+                                <?php
+                                    }
+                                ?>
+                            </select>
+                            <label >Materias:</label>
+                            <select class= "form-control" id="cbx_materia" name="cbx_materia" dir="ltr" required>
+                            </select>
+                            <br/>
+                        <input class="btn-group-sm" type="submit" value="Subir OAs"/>
                     </form>
 
                 </div>
@@ -170,17 +202,17 @@ if (@!$_SESSION['usuario']) {
                         contentType: false,
                         processData: false,
                         success: function(html){
-                            if(html==1){
-                                alert("Datos guardados satisfactoriamente");
 
-                            }
-                            else alert('No se pudo ingresar');
+
+                            if(html==1){
+                                alert("Datos guardados satisfactoriamente");}
+                            else{
                             $("#nombre").val('');
                             $("#descripcion").val('');
                             $("#institucion").val('');
                             $("#palabras_claves").val('');
                             $('#envio').val('');
-                            $('#o_aprendizaje').val('');
+                            $('#o_aprendizaje').val('');}
                         }
 
                     })

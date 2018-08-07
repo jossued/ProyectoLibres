@@ -12,7 +12,31 @@ if (@!$_SESSION['usuario']) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
+    <script type="text/javascript">
+           function verificar($x)
+                    {           
+                         idObjeto = $x;
+                         $.ajax({
+                            type: "POST",
+                            url: "validarValoracion.php",
+                            data: {idObjeto:idObjeto},
+                            success: function (html) {
+                            if(html==1){
+                            ocultar("botons1");
+                            }else{
+               }
 
+                           }
+                         
+                });
+        } 
+
+            function ocultar(id) {
+                var e = document.getElementById(id);
+                e.style.display = 'none';
+                }
+         
+    </script>
     <meta charset="utf-8"></meta>
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"></link>
     <script type="text/javascript" src="../../plugins/bootstrap/js/jquery-3.3.1.js"></script>
@@ -21,16 +45,26 @@ if (@!$_SESSION['usuario']) {
     <title>Proyecto SGOA</title>
 </head>
 <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */
+
+    input[type = "radio"]{ display:none;}
+    label{ color:grey;}
+
+    .clasificacion{
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    }
+
+    label:hover,
+    label:hover ~ label{color:orange;}
+    input[type = "radio"]:checked ~ label{color:orange;}
     .navbar {
         margin-bottom: 0;
         border-radius: 0;
     }
 
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 390px}
 
-    /* Set gray background color and 100% height */
+
     .sidenav {
         padding-top: 20px;
         background-color: #f1f1f1;
@@ -153,6 +187,14 @@ if (@!$_SESSION['usuario']) {
             width: 100%;
         }
     }
+
+    .estadistica{
+        text-align: center;
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 1;
+        
+    }
 </style>
 
 
@@ -185,7 +227,11 @@ require_once '../clases_negocio/clase_conexion.php';
 require '../clases_negocio/funciones_oa_profesor.php';
 require '../clases_negocio/funciones_oa_estudiante.php';
 $id_objeto_aprendizaje = filter_input(INPUT_GET, 'id');
-//extract($_GET);
+function verificarValoracion($x){
+    echo '<script type="text/javascript"> verificar('.$x.') </script>';
+}
+verificarValoracion($id_objeto_aprendizaje);
+
 $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
 ?>
 
@@ -195,8 +241,27 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
         <h2><?php echo $objeto_de_aprendizaje['nombre'] ?></h2>
         <p><?php echo $objeto_de_aprendizaje['descripcion'] ?></p>
         <div style="text-align:right">
-            <p><?php echo $objeto_de_aprendizaje['fechaCreacion'] ?></p>
+             <p><?php echo $objeto_de_aprendizaje['fechaCreacion'] ?></p>
+             <form action="agregar_valoracion.php" method="post" id='valorarObjeto'>
+             <input class="form-control" style="display: none;" value='<?php echo $id_objeto_aprendizaje ?>'name='id_objeto_aprendizaje'></input>
+             <p>Valoración</p>
+             <div class="form-group">
+                <p class="clasificacion">
+                <input id="radio1" type="radio" name="estrellas" value="1">
+                <label for="radio1">★</label>
+                <input id="radio2" type="radio" name="estrellas" value="2">
+                <label for="radio2">★</label>
+                <input id="radio3" type="radio" name="estrellas" value="3">
+                <label for="radio3">★</label>
+                <input id="radio4" type="radio" name="estrellas" value="4">
+                <label for="radio4">★</label>
+                <input id="radio5" type="radio" name="estrellas" value="5">
+                <label for="radio5">★</label>
+             </div>
+             <input id="botons1" type="submit" name="submitted" value="Valorar"/>
+            </form>
         </div>
+
     </div>
 
     <div class="table-responsive-sm">
@@ -313,7 +378,16 @@ $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
         </br>
     </form>
 </div>
+        <div class="estadistica">
 
+            <div class="column">
+
+                <?php
+            echo '<embed src= "../modulos_profesor/High/examples/pie-basic/estadisticaCalificacion.php" height="500" width="600"></embed>';
+
+                ?>
+            </div>
+        </div>
 </div></br></br></br>
 
 <footer class="label-default container-fluid text-center">

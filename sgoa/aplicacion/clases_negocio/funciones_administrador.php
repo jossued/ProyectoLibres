@@ -12,6 +12,22 @@ function act_des_usuario($id_usuario, $activo)
     $consulta->execute();
 }
 
+function consultarCarreras(){
+    $conexion = new Conexion();
+    $statement = 'select * from facultad';
+    $consulta = $conexion->prepare($statement);
+    $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    $consulta->execute();
+    if ($consulta->rowCount() != 0) {
+        $fila = $consulta->fetch();
+    }
+    if (isset($fila)) {
+        return $fila;
+    } else {
+        return null;
+    }  
+}
+
 function eliminar_usuario($id_usuario)
 {
     $statement_del = "DELETE FROM usuario WHERE idUsuario=?";
@@ -73,5 +89,9 @@ function enviar_mail2($mail, $usuario)
         echo "ERROR";
     }
 }
+
+
+
+
 
 ?>

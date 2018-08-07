@@ -7,11 +7,26 @@ if (@!$_SESSION['usuario']) {
 } elseif ($_SESSION['tipo_usuario'] == 'PRO') {
     echo "eres PROFESOR";
 }
+    require_once '../modulos_profesor/High/examples/pie-basic/conexion.php';
+    $sql = "select * from facultad";
+    $result = mysqli_query($conexion, $sql); 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 <head>
+<script languaje = "javascript">
+            $(document).ready(function(){
+                $("#cbx_carreras").change(function(){
+                    $("#cbx_carreras option:selected").each(function(){
+                            idfacultad = $(this).val();
 
+                            $.post("../modulos_profesor/getCarreras.php", {idfacultad: idfacultad}, function(data){
+                                $("#cbx_materia").html(data);
+                            });
+                    });
+                })
+            });
+        </script>
     <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0"></meta>
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"></link>
@@ -101,6 +116,21 @@ if (@!$_SESSION['usuario']) {
                     <label for="palabras_claves">Palabras claves:</label>
                     <input type="text"  class="form-control" id="palabras_claves" placeholder="Palabras claves"  name="palabras_claves" required>
                 </div>
+                <label >Carreras:</label>
+                 <select class= "form-control" id="cbx_carreras"  name="carreras" dir="ltr" required>
+                <option value="0">Selecione una Carrera</option>
+                <?php 
+
+                    while($row = mysqli_fetch_array($result)){
+                                ?>
+                    <option value = "<?php echo $row['idfacultad'];?>"> <?php echo $row['facultad'];?></option>
+                    <?php
+                                    }
+                                ?>
+                            </select>
+                            <label >Materias:</label>
+                            <select class= "form-control" id="cbx_materia" name="cbx_materia" dir="ltr" required>
+                            </select>
 
                 <input type="submit" value="Subir OAs"/>
             </form>

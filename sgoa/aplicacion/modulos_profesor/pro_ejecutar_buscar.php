@@ -153,6 +153,10 @@ if (@!$_SESSION['usuario']) {
                         case 'autor':
                             $statement='select oa.* from objeto_aprendizaje as oa, usuario as u, profesor as p where oa.id_usuario=u.idUsuario and u.idUsuario=p.id_usuario and (p.nombres like "%'.$valor_criterio.'%" or p.apellidos like "%'.$valor_criterio.'%")';
                             break;
+                        case 'cbx_materia':
+                            $clausula_where = ' where materia like "%' . $valor_criterio . '%" order by materia';
+                            $statement = 'select * from objeto_aprendizaje' . $clausula_where;
+                            break;
                     }
                     //fin de adquisicion de parametros de busqueda
                     $conexion = new Conexion();

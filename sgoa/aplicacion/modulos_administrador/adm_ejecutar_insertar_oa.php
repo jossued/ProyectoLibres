@@ -25,6 +25,7 @@ $consulta = $conexion->prepare($statement);
 if ($consulta->execute(array($nombre, $descripcion, $id_usuario, $institucion, $palabras_clave, $_FILES['o_aprendizaje']['size'], $target_file))) {
     $seGuardo_db = 1;
     echo "1";
+
 } else {
     echo "0";
     $seGuardo_db = 0;

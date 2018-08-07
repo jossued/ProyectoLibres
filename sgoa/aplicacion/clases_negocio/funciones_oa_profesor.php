@@ -84,6 +84,17 @@ function obtener_oa_como_arreglo($id_objeto_aprendizaje) {
     }
 }
 
+function insertar_valoracion($id_objeto_aprendizaje,$idusuario,$puntaje){
+    $conexion=new Conexion();
+    $statement = 'INSERT INTO valoracion (idvaloracion,idobjeto_aprendizaje,idusuario,puntuacion) VALUES (?,?,?,?)';
+    $consulta = $conexion ->prepare($statement);
+     if ($consulta->execute(array(null,$id_objeto_aprendizaje,$idusuario,$puntaje))) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function consultarNombreUsuario($id_usuario){
     $conexion = new Conexion();
     $statement = 'select usuario from usuario where idusuario=?';
@@ -134,6 +145,13 @@ function eliminarComentario($id_comentario){
     $conexion_del = new Conexion();
     $consulta_del = $conexion_del->prepare($statement_del);
     $consulta_del->execute(array($id_comentario));
+}
+
+function actualizar_cant_materia ($materia_nombre){
+    $statement_del = "UPDATE materia SET cantidad=cantidad+1 WHERE materia_id =?";
+    $conexion_del = new Conexion();
+    $consulta_del = $conexion_del->prepare($statement_del);
+    $consulta_del->execute(array($materia_nombre));
 }
 
 function obtener_lista_de_oas() {
@@ -251,6 +269,8 @@ function generar_usuario_profesor($nombre, $apellido){
     }
 }
 
+
+
 function obtener_nro_usuarios_con_usuario($usuario) {
     $conexion = new Conexion();
     $statement = 'select count(*) as nro_usuarios from usuario where usuario=?';
@@ -268,4 +288,40 @@ function obtener_nro_usuarios_con_usuario($usuario) {
     }
 }
 
+function actualizar_cant_descarga ($id_objeto){
+    $statement_del = "UPDATE objeto_aprendizaje SET descarga=descarga+1 WHERE idobjeto_aprendizaje =?";
+    $conexion_del = new Conexion();
+    $consulta_del = $conexion_del->prepare($statement_del);
+    $consulta_del->execute(array($id_objeto));
+}
+
+function consultar_materiaxid($cbx_materia){
+    $conexion = new Conexion();
+    $statement = 'select materia_nombre from materia where materia_id=?';
+    $consulta = $conexion->prepare($statement);
+    $consulta->setFetchMode(PDO::FETCH_ASSOC);
+    $consulta->execute([$cbx_materia]);
+    if ($consulta->rowCount() != 0) {
+        $fila = $consulta->fetch();
+        $materia_nombre = $fila['materia_nombre'];
+    }
+    if (isset($materia_nombre)) {
+        return $materia_nombre;
+    } else {
+        return null;
+    }
+}
+
+function enviar_mail3($mail, $usuario, $link)
+{
+    $to = ''. $mail . '';
+    $subject = 'SGOA!';
+    $message = 'Usuario:' . $usuario . ' Un nuevo OA de su interés se ha añadido: ' .$link. '';
+    $headers = "From: objetosaprendizaje593@gmail.com\r\n";
+    if (mail($to, $subject, $message, $headers)) {
+        echo "SUCCESS";
+    } else {
+        echo "ERROR";
+    }
+}
 ?>

@@ -46,5 +46,14 @@ function insertar_estudiante($ci, $nombres, $apellidos, $carrera, $facultad, $ma
         return false;
     }
 }
-
+function insertarValoracion($id_objeto_aprendizaje,$idusuario,$puntaje){
+    $conexion=new Conexion();
+    $statement = 'INSERT INTO valoracion (idvaloracion,idobjeto_aprendizaje,idusuario,puntuacion) VALUES (?,?,?,?)';
+    $consulta = $conexion ->prepare($statement);
+     if ($consulta->execute(array(null,$id_objeto_aprendizaje,$idusuario,$puntaje))) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>

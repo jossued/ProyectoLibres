@@ -50,9 +50,11 @@ if (@!$_SESSION['usuario']) {
         background-color: #555;
         color: white;
         padding: 15px;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         width: 100%;
+        padding-top:5px;
+    padding-bottom:5px;
     }
 
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -66,6 +68,13 @@ if (@!$_SESSION['usuario']) {
 
     .table > tbody > tr > td {
         vertical-align: middle;
+    }
+
+        .estadistica{
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 2;
+        
     }
 </style>
 
@@ -108,6 +117,7 @@ if (@!$_SESSION['usuario']) {
                         <td>Tamaño</td>
                         <td>Autor</td>
                         <td>Comentarios</td>
+                        <td>Descargas</td>
                     </tr>
                     </thead>
             </div>
@@ -138,10 +148,11 @@ if (@!$_SESSION['usuario']) {
                         echo '<td>' . $profesor['nombres'] . ' ' . $profesor['apellidos'] . '</td>';
                     }
                     echo '<td><a href="adm_comentarios.php?id=' . $row['idobjeto_aprendizaje'] . '">' . obtener_nro_comentarios_oa($row['idobjeto_aprendizaje']) . '</a></td>';
+                    echo '<td>' . $row['descarga'] . '</td>';
                     echo '<td><a "href="adm_actualizar_oa.php?id=' . $row['idobjeto_aprendizaje'] . '"><span class="glyphicon glyphicon-refresh"></a></td>';
                     echo "<td><a id='borrar'onClick=\"eliminar('".$row['idobjeto_aprendizaje']."');\" href='adm_buscar.php?id=" . $row['idobjeto_aprendizaje'] . "&idborrar=2'><span class='glyphicon glyphicon-trash'></a></td>";
 
-                    echo '<td><a href="'.$row['ruta'].'">Descargar</a></td>';
+                    echo "<td><a href=" . $row['ruta'] . "  onclick= \"myFunction('" . $row['idobjeto_aprendizaje'] . "');\" >Descargar</a></td>";
                     echo "<td><a href='#' onmouseover=\"hacer_hover('".$row['ruta']."');\"><span class='glyphicon glyphicon-eye-open'></a></td>";
                     echo '</tr>';
                 }
@@ -156,6 +167,27 @@ if (@!$_SESSION['usuario']) {
             }
             $conexion = null;
             ?>
+            <script type = "text/javascript">
+                (function(){
+                    location.reload();
+                    //$("#tabla").ajax().reload();
+                }, 10000);
+
+                function myFunction(id_objeto)
+                {
+
+                    $.ajax({
+
+                        url: '../modulos_profesor/pro_ejecutar_actualizar_descarga.php',
+                        type: 'POST',
+                        data: 'objeto_id='+id_objeto,
+
+                        async : false,
+
+                    });
+
+                }
+            </script>
             <script>
                 function hacer_hover($x)
                 {
@@ -183,6 +215,19 @@ if (@!$_SESSION['usuario']) {
             </script>
 
         </div>
+
+        <div class="estadistica">
+        <div class="column">
+            <embed src= "../modulos_profesor/High/examples/pie-basic/index.php" height="500" width="600"></embed>    
+            </div>
+
+            <div class="column">
+            <embed src= "../modulos_profesor/High/examples/pie-basic/estadisticaDescargas.php" height="500" width="600"></embed>
+            </div>
+
+
+        </div>
+
     </div>
 </div></br></br></br>
 <footer class="label-default container-fluid text-center">

@@ -126,6 +126,8 @@ if (@!$_SESSION['usuario']) {
                     <?php
                     require_once '../clases_negocio/clase_conexion.php';
                     require '../clases_negocio/funciones_oa_profesor.php';
+                    require '../clases_negocio/funciones_oa_estudiante.php';
+
 
                     //adquisicion de parametros de busqueda 
                     $criterio = filter_input(INPUT_POST, 'tipo_criterio');

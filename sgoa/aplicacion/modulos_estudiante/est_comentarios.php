@@ -11,7 +11,31 @@ if (@!$_SESSION['usuario']) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
     <head>
+        <script type="text/javascript">
+           function verificar($x)
+                    {           
+                         idObjeto = $x;
+                         $.ajax({
+                            type: "POST",
+                            url: "validarValoracion.php",
+                            data: {idObjeto:idObjeto},
+                            success: function (html) {
+                            if(html==1){
+                            ocultar("botons1");
+                            }else{
+               }
 
+                           }
+                         
+                });
+        } 
+
+            function ocultar(id) {
+                var e = document.getElementById(id);
+                e.style.display = 'none';
+                }
+         
+    </script>
         <meta charset="utf-8"></meta>
         <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"></link>
         <script type="text/javascript" src="../../plugins/bootstrap/js/jquery-3.3.1.js"></script>
@@ -19,137 +43,155 @@ if (@!$_SESSION['usuario']) {
         <title>Proyecto SGOA</title>
     </head>
     <style>
-        /* Remove the navbar's default margin-bottom and rounded borders */ 
-        .navbar {
-            margin-bottom: 0;
-            border-radius: 0;
-        }
+    input[type = "radio"]{ display:none;}
+    label{ color:grey;}
 
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {height: 390px}
+    .clasificacion{
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    }
 
-        /* Set gray background color and 100% height */
-        .sidenav {
-            padding-top: 20px;
-            background-color: #f1f1f1;
-            height: 100%;
-        }
+    label:hover,
+    label:hover ~ label{color:orange;}
+    input[type = "radio"]:checked ~ label{color:orange;}
+    .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+    }
 
-        /* Set black background color, white text and some padding */
-        html{
-            min-height: 100%;
-            position: relative;
-        }
-        body{
-            margin:0;
-            margin-bottom: 40px;
-        }
-        /* Set black background color, white text and some padding */
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-
-        /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-            .row.content {height:auto;} 
-        }
+    .row.content {height: 390px}
 
 
-        body {font-family: Arial, Helvetica, sans-serif;}
+    .sidenav {
+        padding-top: 20px;
+        background-color: #f1f1f1;
+        height: 100%;
+    }
 
-#myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#myImg:hover {opacity: 0.7;}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-
-/* Caption of Modal Image */
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {    
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
-    to {-webkit-transform:scale(1)}
-}
-
-@keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
-}
-
-/* The Close Button */
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-@media only screen and (max-width: 700px){
-    .modal-content {
+    /* Set black background color, white text and some padding */
+    html{
+        min-height: 100%;
+        position: relative;
+    }
+    body{
+        margin:0;
+        margin-bottom: 40px;
+    }
+    /* Set black background color, white text and some padding */
+    footer {
+        background-color: #555;
+        color: white;
+        padding: 15px;
+        position: absolute;
+        bottom: 0;
         width: 100%;
     }
-}
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+        .sidenav {
+            height: auto;
+            padding: 15px;
+        }
+        .row.content {height:auto;}
+    }
+
+
+    body {font-family: Arial, Helvetica, sans-serif;}
+
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)}
+        to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)}
+        to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px){
+        .modal-content {
+            width: 100%;
+        }
+    }
+
+    .estadistica{
+        text-align: center;
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 1;
+        
+    }
     </style>
 
 
@@ -181,7 +223,12 @@ if (@!$_SESSION['usuario']) {
         require '../clases_negocio/funciones_oa_estudiante.php';
         require '../clases_negocio/funciones_oa_profesor.php';
         $id_objeto_aprendizaje = filter_input(INPUT_GET, 'id');
+        function verificarValoracion($x){
+        echo '<script type="text/javascript"> verificar('.$x.') </script>';
+        }
+        verificarValoracion($id_objeto_aprendizaje);
         $objeto_de_aprendizaje = obtener_oa_como_arreglo($id_objeto_aprendizaje);
+
         ?>
 
 
@@ -191,6 +238,24 @@ if (@!$_SESSION['usuario']) {
                 <p><?php echo $objeto_de_aprendizaje['descripcion'] ?></p>
                 <div style="text-align:right">
                     <p><?php echo $objeto_de_aprendizaje['fechaCreacion'] ?></p>
+                    <form action="agregarvaloracion.php" method="post" id='valorarObjeto'>
+                    <input class="form-control" style="display: none;" value='<?php echo $id_objeto_aprendizaje ?>'name='id_objeto_aprendizaje'></input>
+                    <p>Valoración</p>
+                    <div class="form-group">
+                    <p class="clasificacion">
+                    <input id="radio1" type="radio" name="estrellas" value="5">
+                    <label for="radio1">★</label>
+                    <input id="radio2" type="radio" name="estrellas" value="4">
+                    <label for="radio2">★</label>
+                    <input id="radio3" type="radio" name="estrellas" value="3">
+                    <label for="radio3">★</label>
+                    <input id="radio4" type="radio" name="estrellas" value="2">
+                    <label for="radio4">★</label>
+                    <input id="radio5" type="radio" name="estrellas" value="1">
+                    <label for="radio5">★</label>
+                    </div>
+                    <input id="botons1" type="submit" name="submitted" value="Valorar"/>
+                    </form>
                 </div>
             </div>
 
@@ -236,7 +301,7 @@ if (@!$_SESSION['usuario']) {
                                 }else{
                                     $estudiante = obtener_estudiante_como_arreglo(obtener_id_estudiante_con_id_usuario($comentario['idusuario']));
                                 echo '<td>' . $estudiante['nombres'] . ' ' . $estudiante['apellidos'] . '</td>';
-                            }
+                                }
                                 echo '<td>' . $comentario['fechacomentario'] . '</td>';
                                 if(($comentario['rutaimagen'])=="../../imagenes/")
                                     {
@@ -310,7 +375,12 @@ if (@!$_SESSION['usuario']) {
                 </br>
             </form>
         </div>
+        <div class="estadistica">
 
+            <div class="column">
+            <embed src= "../modulos_profesor/High/examples/pie-basic/estadisticaCalificacion.php" height="500" width="600"></embed>
+            </div>
+        </div>
         </div></br></br></br>
 
         <footer class="label-default container-fluid text-center">
